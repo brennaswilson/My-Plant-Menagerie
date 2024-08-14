@@ -1,0 +1,55 @@
+
+// CITATION FOR CSS
+// At the bottom of this file, we import the react-bootsrap defaults.
+// DATE ACCESSED: 27 JULY 2024
+// URL: https://react-bootstrap.netlify.app/
+
+:root {
+  --green1:         #4A9F79;
+  --green-body:     rgba(190, 236, 200, 0.369);
+  --green-bg:       rgb(190, 236, 200);
+  --alert:          rgb(238, 115, 115);
+}
+
+
+.fixed-top{
+  background-color: var(--green-bg)   !important;
+}
+
+body {
+  background-color: var(--green-body) !important;
+}
+
+// prevent navbar & footer from overlapping with content on the page
+.main-content {
+  padding-top: 55px;
+  padding-bottom: 65px;
+  min-width: 500px;
+  // min-width: 75%;
+}
+
+//making the footer a solid color allows content to scroll under it without displaying funny
+.fixed-bottom{
+  font-size: 0.7em;
+  background-color: var(--green-bg);
+  margin: 0;
+}
+
+// CITATION FOR THE FOLLOWING CSS BLOCK
+// Following default CSS block from the vite default scaffolding
+// Date Accessed: 27 July 2024
+// Version Used: create-vite@5.4.0
+// URL: https://vitejs.dev/
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.pastDueRow{
+  background-color: var(--alert) !important;
+}
+
+// import bootstrap last, so our variables override the defaults
+@import 'node_modules/bootstrap/scss/bootstrap';

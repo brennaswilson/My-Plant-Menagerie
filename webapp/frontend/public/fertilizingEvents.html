@@ -1,0 +1,173 @@
+<!-- 
+Citation for this html file
+Date: 7/22/24
+Copied from AND Adapted from:
+Source URL: https://canvas.oregonstate.edu/courses/1967354/assignments/9690212#:~:text=page.%20Here%20is-,an%20example%20of%20what%20those%20files%20would%20look%20like,-Download%20an%20example
+ -->
+
+ <html>
+    <head>
+    <title>Fertilizing Events</title>
+    <script language="JavaScript">
+            function showform(dowhat) {
+                /*
+                * four DIVS: browse, insert, update, delete
+                * this function sets one visible the others not
+                */
+                if (dowhat == 'insert'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'block';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'none';
+                }
+                else if (dowhat == 'update'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'block';
+                    document.getElementById('delete').style.display = 'none';
+                }
+                else if (dowhat == 'delete'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'block';
+                }
+          else if (dowhat == 'all'){
+                    document.getElementById('browse').style.display = 'block';
+                    document.getElementById('insert').style.display = 'block';
+                    document.getElementById('update').style.display = 'block';
+                    document.getElementById('delete').style.display = 'block';
+                }
+                else { //by default display browse
+                    document.getElementById('browse').style.display = 'block';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'none';
+                }
+            }
+        function newFertilizing() { showform('insert'); }
+        function updateFertilizing(pid) { showform('update'); }
+        function deleteFertilizing(pid) { showform ('delete'); }
+        function browseFertilizing() { showform ('browse'); }
+        function showAll() { showform ('all'); }
+    </script>
+    </head>
+    
+    <body onload="browseFertilizing()">
+    <h1>Fertilizing Events</h1>
+    
+    [ <a href="index.html">Home</a>
+    | <a href="plants.html">Plants</a> | <a href="plantTypes.html">Plant Types</a> | <a href="soilTypes.html">Soil Types</a> 
+    | <a href="wateringEvents.html">Watering Events</a> | <a href="fertilizingEvents.html">Fertilizing Events</a> 
+    | <a href="plantSoils.html">Plant Soils</a> ]
+    
+    <div id="browse">
+    <p><a href="#" onClick="showAll()">Display all forms</a> </p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#" onClick="newFertilizing()">New</a></th>
+        <th></th>
+        <th>id</th>
+        <th>FertilizingDate</th>
+        <th>Plant Type</th>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateFertilizing('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteFertilizing('this.eventID')">Delete</a></td>
+        <td align="right" >1</td>
+        <td>2024-05-30</td>
+        <td align="right" >Pothos in Living Room</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateFertilizing('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteFertilizing('this.eventID')">Delete</a></td>
+        <td align="right" >2</td>
+        <td>2024-05-30</td>
+        <td align="right" >Pothos in Dining Room</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateFertilizing('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteFertilizing('this.eventID')">Delete</a></td>
+        <td align="right" >3</td>
+        <td>2024-06-15</td>
+        <td align="right" >Pothos in Living Room</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateFertilizing('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteFertilizing('this.eventID')">Delete</a></td>
+        <td align="right" >4</td>
+        <td>2024-06-15</td>
+        <td align="right" >Pothos in Dining Room</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateFertilizing('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteFertilizing('this.eventID')">Delete</a></td>
+        <td align="right" >5</td>
+        <td>2024-07-02</td>
+        <td align="right" >String of Pearls</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateFertilizing('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteFertilizing('this.eventID')">Delete</a></td>
+        <td align="right" >6</td>
+        <td>2024-07-03</td>
+        <td align="right" >Orange Cherry Tomatoes</td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    </div> <!-- browse -->
+    <div id="insert">
+        <form method="POST" id="addFertilizing">
+            <legend><strong>Add Fertilizing Event</strong></legend>
+              <fieldset class="fields">
+                <label> Fertilizing Date</label> <input type="date" name="fertilizingDate">
+                <label> Plant </label> <select name="plantID">
+                    <option value="0">&nbsp;</option>
+                    <option value="1">Pothos in Living Room</option>
+                    <option value="2">Pothos in Dining Room</option>
+                    <option value="3">String of Pearls</option>
+                    <option value="4">Orange Cherry Tomatoes</option>
+                    </select>
+          </fieldset>
+              <input class="btn" type="submit" id="addFertilizing" value="Add Fertilizing Event">
+              <input class="btn" type="button" value="cancel" onClick="browseFertilizing()">
+        </form> 
+    </div><!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+        <form method="POST" id="UpdateFertilizing">
+            <legend><strong>Update Fertilizing Event</strong></legend>
+              <fieldset class="fields">
+              <input type="hidden" name="eventID" id="updateeventID" value="1">
+              <label> Fertilizing Date</label> <input type="date" name="fertilizingDate" value="2024-05-30">
+              <label> Plant </label> <select name="plantID">
+                <option value="0">&nbsp;</option>
+                <option value="1" selected>Pothos in Living Room</option>
+                <option value="2">Pothos in Dining Room</option>
+                <option value="3">String of Pearls</option>
+                <option value="4">Orange Cherry Tomatoes</option>
+                </select>
+          </fieldset>
+              <input class="btn" type="submit" id="UpdateSaveFertilizing" value="Save Update Fertilizing Event">
+              <input class="btn" type="button" value="cancel" onClick="browseFertilizing()">
+        </form> 
+    </div><!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deleteFertilizing">
+          <legend><strong>Delete Fertilizing Event</strong></legend>
+              <fieldset class="fields">
+              <p>Are you positive that you want to delete this fertilizing event?</p>
+              <input type="hidden" name="eventID" id="deleteeventID" value="1">
+              <label><strong>ID:</strong></label> 1
+                <label> <strong>Fertilizing Event Date:</strong> </label> 2024-05-30
+                
+        </fieldset>
+        <input class="btn" type="submit" id="DeleteFertilizing" value="Delete Fertilizing Event">
+              <input class="btn" type="button" value="cancel" onClick="browseFertilizing()">
+      </form> 
+    </div><!-- delete -->
+    
+    </body>
+    </html>
+    

@@ -1,0 +1,139 @@
+<!-- 
+Citation for this html file
+Date: 7/22/24
+Copied from AND Adapted from:
+Source URL: https://canvas.oregonstate.edu/courses/1967354/assignments/9690212#:~:text=page.%20Here%20is-,an%20example%20of%20what%20those%20files%20would%20look%20like,-Download%20an%20example
+ -->
+
+ <html>
+    <head>
+    <title>Soil Types</title>
+    <script language="JavaScript">
+            function showform(dowhat) {
+                /*
+                * four DIVS: browse, insert, update, delete
+                * this function sets one visible the others not
+                */
+                if (dowhat == 'insert'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'block';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'none';
+                }
+                else if (dowhat == 'update'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'block';
+                    document.getElementById('delete').style.display = 'none';
+                }
+                else if (dowhat == 'delete'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'block';
+                }
+          else if (dowhat == 'all'){
+                    document.getElementById('browse').style.display = 'block';
+                    document.getElementById('insert').style.display = 'block';
+                    document.getElementById('update').style.display = 'block';
+                    document.getElementById('delete').style.display = 'block';
+                }
+                else { //by default display browse
+                    document.getElementById('browse').style.display = 'block';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'none';
+                }
+            }
+        function newSoilType() { showform('insert'); }
+        function updateSoilType(pid) { showform('update'); }
+        function deleteSoilType(pid) { showform ('delete'); }
+        function browseSoilType() { showform ('browse'); }
+        function showAll() { showform ('all'); }
+    </script>
+    </head>
+    
+    <body onload="browseSoilType()">
+    <h1>Soil Types</h1>
+    
+    [ <a href="index.html">Home</a>
+    | <a href="plants.html">Plants</a> | <a href="plantTypes.html">Plant Types</a> | <a href="soilTypes.html">Soil Types</a> 
+    | <a href="wateringEvents.html">Watering Events</a> | <a href="fertilizingEvents.html">Fertilizing Events</a> 
+    | <a href="plantSoils.html">Plant Soils</a> ]
+    
+    <div id="browse">
+    <p><a href="#" onClick="showAll()">Display all forms</a> </p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#" onClick="newSoilType()">New</a></th>
+        <th></th>
+        <th>id</th>
+        <th>soilType</th>
+        <th>soilDescription</th>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateSoilType('this.soilTypeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteSoilType('this.soilTypeID')">Delete</a></td>
+        <td align="right" >1</td>
+        <td >Houseplant Potting Mix</td>
+        <td>pre-mix with compost</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateSoilType('this.soilTypeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteSoilType('this.soilTypeID')">Delete</a></td>
+        <td align="right" >2</td>
+        <td >sandy mix</td>
+        <td>sandier soil mix good for succulents</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateSoilType('this.soilTypeID')">Edit</a></td>
+        <td><a href="#" onclick="deleteSoilType('this.soilTypeID')">Delete</a></td>
+        <td align="right" >3</td>
+        <td >topsoil</td>
+        <td>contains organic matter like leaves</td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    </div> <!-- browse -->
+    <div id="insert">
+        <form method="POST" id="addSoilType">
+            <legend><strong>Add Soil Type</strong></legend>
+              <fieldset class="fields">
+                <label> Soil Type </label> <input type="text" name="soilType">
+                <label> Soil Description </label> <input type="text" name="soilType">
+              </fieldset>
+              <input class="btn" type="submit" id="addType" value="Add Soil Type">
+              <input class="btn" type="button" value="cancel" onClick="browseSoilType()">
+        </form> 
+    </div><!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+        <form method="POST" id="UpdateType">
+            <legend><strong>Update Soil Type</strong></legend>
+              <fieldset class="fields">
+                <label> Soil Type </label> <input type="text" name="soilType" value="Houseplant Potting Mix">
+                <label> Soil Description </label> <input type="text" name="soilType" value="pre-mix with compost">
+          </fieldset>
+              <input class="btn" type="submit" id="UpdateSaveType" value="Save Update Soil Type">
+              <input class="btn" type="button" value="cancel" onClick="browseSoilType()">
+        </form> 
+    </div><!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deleteSoilType">
+          <legend><strong>Delete Soil Type</strong></legend>
+              <fieldset class="fields">
+              <p>Are you positive that you want to delete this soil type?</p>
+              <input type="hidden" name="soilTypeID" id="deletesoilTypeID" value="1">
+              <label><strong>ID:</strong></label> 1
+                <label> <strong>Soil Type:</strong> </label> Houseplant Potting Mix
+                
+        </fieldset>
+        <input class="btn" type="submit" id="DeleteType" value="Delete Soil Type">
+              <input class="btn" type="button" value="cancel" onClick="browseSoilType()">
+      </form> 
+    </div><!-- delete -->
+    
+    </body>
+    </html>
+    

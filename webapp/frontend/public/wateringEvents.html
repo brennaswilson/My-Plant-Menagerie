@@ -1,0 +1,167 @@
+<!-- 
+Citation for this html file
+Date: 7/22/24
+Copied from AND Adapted from:
+Source URL: https://canvas.oregonstate.edu/courses/1967354/assignments/9690212#:~:text=page.%20Here%20is-,an%20example%20of%20what%20those%20files%20would%20look%20like,-Download%20an%20example
+ -->
+
+
+ <html>
+    <head>
+    <title>Watering Events</title>
+    <script language="JavaScript">
+            function showform(dowhat) {
+                /*
+                * four DIVS: browse, insert, update, delete
+                * this function sets one visible the others not
+                */
+                if (dowhat == 'insert'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'block';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'none';
+                }
+                else if (dowhat == 'update'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'block';
+                    document.getElementById('delete').style.display = 'none';
+                }
+                else if (dowhat == 'delete'){
+                    document.getElementById('browse').style.display = 'none';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'block';
+                }
+          else if (dowhat == 'all'){
+                    document.getElementById('browse').style.display = 'block';
+                    document.getElementById('insert').style.display = 'block';
+                    document.getElementById('update').style.display = 'block';
+                    document.getElementById('delete').style.display = 'block';
+                }
+                else { //by default display browse
+                    document.getElementById('browse').style.display = 'block';
+                    document.getElementById('insert').style.display = 'none';
+                    document.getElementById('update').style.display = 'none';
+                    document.getElementById('delete').style.display = 'none';
+                }
+            }
+        function newWatering() { showform('insert'); }
+        function updateWatering(pid) { showform('update'); }
+        function deleteWatering(pid) { showform ('delete'); }
+        function browseWatering() { showform ('browse'); }
+        function showAll() { showform ('all'); }
+    </script>
+    </head>
+    
+    <body onload="browseWatering()">
+    <h1>Watering Events</h1>
+    
+    [ <a href="index.html">Home</a>
+    | <a href="plants.html">Plants</a> | <a href="plantTypes.html">Plant Types</a> | <a href="soilTypes.html">Soil Types</a> 
+    | <a href="wateringEvents.html">Watering Events</a> | <a href="fertilizingEvents.html">Fertilizing Events</a> 
+    | <a href="plantSoils.html">Plant Soils</a> ]
+    
+    <div id="browse">
+    <p><a href="#" onClick="showAll()">Display all forms</a> </p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#" onClick="newWatering()">New</a></th>
+        <th></th>
+        <th>id</th>
+        <th>wateringDate</th>
+        <th>Plant Type</th>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateWatering('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteWatering('this.eventID')">Delete</a></td>
+        <td align="right" >1</td>
+        <td>2024-06-30</td>
+        <td align="right" >String of Pearls</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateWatering('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteWatering('this.eventID')">Delete</a></td>
+        <td align="right" >2</td>
+        <td>2024-07-01</td>
+        <td align="right" >Pothos in Dining Room</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateWatering('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteWatering('this.eventID')">Delete</a></td>
+        <td align="right" >3</td>
+        <td>2024-07-09</td>
+        <td align="right" >Pothos in Dining Room</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateWatering('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteWatering('this.eventID')">Delete</a></td>
+        <td align="right" >4</td>
+        <td>2024-07-15</td>
+        <td align="right" >Pothos in Living Room</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateWatering('this.eventID')">Edit</a></td>
+        <td><a href="#" onclick="deleteWatering('this.eventID')">Delete</a></td>
+        <td align="right" >5</td>
+        <td>2024-07-16</td>
+        <td align="right" >Orange Cherry Tomatoes</td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+    </div> <!-- browse -->
+    <div id="insert">
+        <form method="POST" id="addWatering">
+            <legend><strong>Add Watering Event</strong></legend>
+              <fieldset class="fields">
+                <label> Watering Date</label> <input type="date" name="wateringDate">
+                <label> Plant </label> <select name="plantID">
+                    <option value="0">&nbsp;</option>
+                    <option value="1">Pothos in Living Room</option>
+                    <option value="2">Pothos in Dining Room</option>
+                    <option value="3">String of Pearls</option>
+                    <option value="4">Orange Cherry Tomatoes</option>
+                    </select>
+          </fieldset>
+              <input class="btn" type="submit" id="addWatering" value="Add Watering Event">
+              <input class="btn" type="button" value="cancel" onClick="browseWatering()">
+        </form> 
+    </div><!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+        <form method="POST" id="UpdateWatering">
+            <legend><strong>Update Watering Event</strong></legend>
+              <fieldset class="fields">
+              <input type="hidden" name="eventID" id="updateeventID" value="1">
+              <label> Watering Date</label> <input type="date" name="wateringDate" value="2024-06-30">
+              <label> Plant </label> <select name="plantID">
+                <option value="0">&nbsp;</option>
+                <option value="1" selected>Pothos in Living Room</option>
+                <option value="2">Pothos in Dining Room</option>
+                <option value="3">String of Pearls</option>
+                <option value="4">Orange Cherry Tomatoes</option>
+                </select>
+          </fieldset>
+              <input class="btn" type="submit" id="UpdateSaveWatering" value="Save Update Watering Event">
+              <input class="btn" type="button" value="cancel" onClick="browseWatering()">
+        </form> 
+    </div><!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deleteWatering">
+          <legend><strong>Delete Watering Event</strong></legend>
+              <fieldset class="fields">
+              <p>Are you positive that you want to delete this watering event?</p>
+              <input type="hidden" name="eventID" id="deleteeventID" value="1">
+              <label><strong>ID:</strong></label> 1
+                <label> <strong>Watering Event Date:</strong> </label> 2024-06-30
+                
+        </fieldset>
+        <input class="btn" type="submit" id="DeleteWatering" value="Delete Watering Event">
+              <input class="btn" type="button" value="cancel" onClick="browseWatering()">
+      </form> 
+    </div><!-- delete -->
+    
+    </body>
+    </html>
+    

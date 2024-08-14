@@ -1,0 +1,210 @@
+<!-- 
+Citation for this html file
+Date: 7/22/24
+Copied from AND Adapted from:
+Source URL: https://canvas.oregonstate.edu/courses/1967354/assignments/9690212#:~:text=page.%20Here%20is-,an%20example%20of%20what%20those%20files%20would%20look%20like,-Download%20an%20example
+ -->
+
+<html>
+<head>
+<title>Plants</title>
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newPlant() { showform('insert'); }
+    function updatePlant(pid) { showform('update'); }
+    function deletePlant(pid) { showform ('delete'); }
+    function browsePlant() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browsePlant()">
+<h1>Plants</h1>
+
+[ <a href="index.html">Home</a>
+| <a href="plants.html">Plants</a> | <a href="plantTypes.html">Plant Types</a> | <a href="soilTypes.html">Soil Types</a> 
+| <a href="wateringEvents.html">Watering Events</a> | <a href="fertilizingEvents.html">Fertilizing Events</a> 
+| <a href="plantSoils.html">Plant Soils</a> ]
+
+<div id="browse">
+<p><a href="#" onClick="showAll()">Display all forms</a> </p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#" onClick="newPlant()">New</a></th>
+    <th></th>
+    <th>id</th>
+    <th>Plant Name</th>
+    <th>isInside</th>
+    <th>currentLight</th>
+    <th>Plant Type</th>
+    <th>waterInterval</th>
+    <th>fertilizerInterval</th>
+    <th>plantedDate</th>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updatePlant('this.plantID')">Edit</a></td>
+    <td><a href="#" onclick="deletePlant('this.plantID')">Delete</a></td>
+    <td align="right" >1</td>
+    <td >Pothos in Living Room</td>
+    <td align="right" >Yes</td>
+    <td>Medium</td>
+    <td>Pothos</td>
+    <td>6</td>
+    <td>14</td>
+    <td>2023-01-15</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updatePlant('this.plantID')">Edit</a></td>
+    <td><a href="#" onclick="deletePlant('this.plantID')">Delete</a></td>
+    <td align="right" >2</td>
+    <td >Pothos in Dining Room</td>
+    <td align="right" >Yes</td>
+    <td>Low</td>
+    <td>Pothos</td>
+    <td>7</td>
+    <td>14</td>
+    <td>2020-03-02</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updatePlant('this.plantID')">Edit</a></td>
+    <td><a href="#" onclick="deletePlant('this.plantID')">Delete</a></td>
+    <td align="right" >3</td>
+    <td >String of Pearls</td>
+    <td align="right" >Yes</td>
+    <td>High</td>
+    <td>String of Pearls</td>
+    <td>7</td>
+    <td>0</td>
+    <td>2024-04-17</td>
+  </tr>
+  <tr>
+    <td><a href="#" onClick="updatePlant('this.plantID')">Edit</a></td>
+    <td><a href="#" onclick="deletePlant('this.plantID')">Delete</a></td>
+    <td align="right" >4</td>
+    <td >Orange Cherry Tomatoes</td>
+    <td align="right" >No</td>
+    <td>High</td>
+    <td>Sungold Tomatoes</td>
+    <td>1</td>
+    <td>28</td>
+    <td>2024-06-01</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert">
+    <form method="POST" id="addPlanet">
+        <legend><strong>Add Plant</strong></legend>
+          <fieldset class="fields">
+            <label> Display Name </label> <input type="text" name="displayName">
+            <label> Inside or Outside </label> <select name="isInside">
+                <option value="1">Inside</option>
+                <option value="2">Outside</option>
+                </select>
+            <label> Current Light </label> <select name="light">
+            	<option value="0">&nbsp;</option>
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+                </select>
+            <label> Plant Type (optional)</label> <select name="plantType">
+                <option value="0">&nbsp;</option>
+                <option value="1">Pothos</option>
+                <option value="2">String of Pearls</option>
+                <option value="3">Sungold Tomatoes</option>
+                </select>
+            <br>
+            <br>
+            <label> Watering Frequency (days)</label> <input type="number" name="waterInterval" value="7">
+            <label> Fertilizing Frequency (days)</label> <input type="number" name="fertilizerInterval" value="14">
+            <label> Date Planted</label> <input type="date" name="plantedDate" value="yyyy-MM-dd">
+      </fieldset>
+          <input class="btn" type="submit" id="addPlant" value="Add Plant">
+          <input class="btn" type="button" value="cancel" onClick="browsePlant()">
+	</form> 
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update">
+    <form method="POST" id="UpdatePlant">
+        <legend><strong>Update Plant</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="plantID" id="updateplantID" value="1">
+          <label> Display Name </label> <input type="text" name="displayName" value="Pothos in Living Room">
+            <label> Inside or Outside </label> <select name="isInside">
+                <option value="1" selected>Inside</option>
+                <option value="2">Outside</option>
+                </select>
+            <label> Current Light </label> <select name="light" value="Medium">
+                <option value="1">Low</option>
+                <option value="2" selected>Medium</option>
+                <option value="3">High</option>
+                </select>
+            <label> Plant Type </label> <select name="plantType" value="Pothos">
+                <option value="0">&nbsp;</option>
+                <option value="1" selected>Pothos</option>
+                <option value="2">String of Pearls</option>
+                <option value="3">Sungold Tomatoes</option>
+                </select>
+            <br>
+            <br>
+            <label> Watering Frequency (days)</label> <input type="number" name="waterInterval" value="7">
+            <label> Fertilizing Frequency (days)</label> <input type="number" name="fertilizerInterval" value="14">
+            <label> Date Planted</label> <input type="date" name="plantedDate" value="2023-01-15">
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
+          <input class="btn" type="button" value="cancel" onClick="browsePlant()">
+	</form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form method="POST" id="deletePlant">
+      <legend><strong>Delete Plant</strong></legend>
+          <fieldset class="fields">
+          <p>Are you positive that you want to delete this plant?</p>
+          <input type="hidden" name="plantID" id="deleteplantID" value="1">
+          <label><strong>ID:</strong></label> 1
+            <label> <strong>Plant:</strong> </label> Pothos in Living Room
+            
+    </fieldset>
+    <input class="btn" type="submit" id="DeletePlant" value="Delete Plant">
+          <input class="btn" type="button" value="cancel" onClick="browsePlant()">
+  </form> 
+</div><!-- delete -->
+
+</body>
+</html>
