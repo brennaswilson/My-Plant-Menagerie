@@ -3,7 +3,7 @@
 // URL: https://github.com/osu-cs340-ecampus/react-starter-app
 
 // Load db config
-const db = require("../database/config");
+const db = require("../database/config-supabase");
 // Load .env variables
 require("dotenv").config();
 // Util to deep-compare two objects

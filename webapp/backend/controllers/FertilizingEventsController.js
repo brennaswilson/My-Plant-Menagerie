@@ -4,7 +4,7 @@
 
 
 // Load db config
-const db = require("../database/config");
+const db = require("../database/config-supabase");
 // Load .env variables
 require("dotenv").config();
 // Util to deep-compare two objects
