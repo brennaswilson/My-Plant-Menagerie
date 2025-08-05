@@ -31,7 +31,7 @@ app.use("/api/NextFertilizingDate", require("./routes/HomeRoutesFertilizing.js")
 
 
 // Match to your database config route
-const db = require('./database/config.js');
+const db = require('./database/config-supabase.js');
 
 
 // Citation for how to dynamically change the hostname in the log output
