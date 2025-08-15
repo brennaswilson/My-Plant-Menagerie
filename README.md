@@ -312,21 +312,10 @@ rm plant_menagerie.db
 # Restart server to recreate database
 ```
 
-## 📚 Documentation
-
-- **[PORTFOLIO_SETUP.md](PORTFOLIO_SETUP.md)** - Detailed portfolio setup guide
-- **[CLEANUP_SUMMARY.md](CLEANUP_SUMMARY.md)** - Codebase cleanup summary
-
 ## 👥 Contributors
 
-- **Brenna Wilson** - Full-stack development, database design
-- **Brianna Kromrey** - Frontend development, UI/UX design
+- **Brenna Wilson** - **Brianna Kromrey** 
 
-## 📄 License
-
-ISC License
-
----
 
 ## 🎯 **Ready to Use!** 🌟
 
