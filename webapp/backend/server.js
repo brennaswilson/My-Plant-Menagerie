@@ -30,8 +30,8 @@ app.use("/api/NextFertilizingDate", require("./routes/HomeRoutesFertilizing.js")
 
 
 
-// Match to your database config route
-const db = require('./database/config-supabase.js');
+// Smart database configuration
+const { db, getInfo } = require('./database/config.js');
 
 
 // Citation for how to dynamically change the hostname in the log output
@@ -43,4 +43,5 @@ const hostname = os.hostname();
 // changed this back to PORT, this shouldn't be hardcoded because it'll automatically use whatever we set in the .env
 app.listen(PORT, () => {
   console.log(`Server running on http://${hostname}:${PORT}...`);
+  console.log(`Database: ${getInfo().description}`);
 });

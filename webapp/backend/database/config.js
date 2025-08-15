@@ -1,20 +1,34 @@
-// This module from the CS340 starter code.
-// Date Accessed: 1 August 2024
-// URL: https://github.com/osu-cs340-ecampus/react-starter-app
+// Smart database configuration switcher
+// Automatically chooses the best database option based on environment
+// Perfect for portfolio demonstrations and development
 
-// Get an instance of mysql we can use in the app
-const mysql = require("mysql2");  
 require("dotenv").config();
 
-// Create a 'connection pool' using the provided credentials
-const pool = mysql.createPool({
-  connectionLimit: 10,
-  waitForConnections: true,
-  host: process.env.DB_HOST || "localhost",
-  user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "your_default_password",
-  database: process.env.DB_DATABASE || "your_default_database",
-}).promise();
+let db;
+let dbType;
 
-// Export it for use in our application
-module.exports = pool;
+// Determine which database to use based on environment
+if (process.env.DATABASE_TYPE === 'sqlite' || !process.env.DATABASE_URL) {
+  // Use SQLite for local development and portfolio
+  console.log('Using SQLite database (local development)');
+  db = require('./config-sqlite.js');
+  dbType = 'sqlite';
+} else {
+  // Default to SQLite for safety
+  console.log('No database type specified, using SQLite (local development)');
+  db = require('./config-sqlite.js');
+  dbType = 'sqlite';
+}
+
+// Export both the database connection and type
+module.exports = {
+  db,
+  dbType,
+  // Helper function to check if we're using SQLite
+  isSQLite: () => dbType === 'sqlite',
+  // Helper function to get database info
+  getInfo: () => ({
+    type: dbType,
+    description: dbType === 'sqlite' ? 'Local SQLite database (local development)' : 'Unknown'
+  })
+};
