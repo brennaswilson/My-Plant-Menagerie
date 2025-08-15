@@ -3,7 +3,7 @@
 // URL: https://github.com/osu-cs340-ecampus/react-starter-app
 
 // Load db config
-const db = require("../database/config-supabase");
+const db = require("../database/db-adapter");
 // Load .env variables
 require("dotenv").config();
 // Util to deep-compare two objects
@@ -18,7 +18,7 @@ const getPlantsDueWatering = async (req, res) => {
         Plants.plantID, 
         Plants.displayName, 
         MAX(WateringEvents.wateringDate) AS 'LastWateredDate', 
-        DATE(MAX(WateringEvents.wateringDate) + INTERVAL Plants.waterInterval DAY) AS 'NextWateringDate',
+        DATE(MAX(WateringEvents.wateringDate), '+' || Plants.waterInterval || ' days') AS 'NextWateringDate',
         'NextWateringDate' AS 'DueForWatering'
       FROM 
         Plants

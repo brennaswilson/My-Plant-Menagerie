@@ -3,7 +3,7 @@
 // URL: https://github.com/osu-cs340-ecampus/react-starter-app
 
 // Load db config
-const db = require("../database/config-supabase");
+const db = require("../database/db-adapter");
 // Load .env variables
 require("dotenv").config();
 // Util to deep-compare two objects
@@ -19,7 +19,7 @@ const getPlantsDueFertilizing = async (req, res) => {
           Plants.plantID, 
           Plants.displayName, 
           MAX(FertilizingEvents.fertilizingDate) AS 'LastFertilizedDate', 
-          DATE(MAX(FertilizingEvents.fertilizingDate) + INTERVAL Plants.fertilizerInterval DAY) AS 'NextFertilizingDate',
+          DATE(MAX(FertilizingEvents.fertilizingDate), '+' || Plants.fertilizerInterval || ' days') AS 'NextFertilizingDate',
           'NextFertilizingDate' AS 'DueForFertilizing'
         FROM 
           Plants
